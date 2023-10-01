@@ -1,8 +1,9 @@
 import Content from "./components/Content";
 import LauncherCard from "./components/LauncherCard";
+import { LauncherView } from "./components/LauncherView";
 
 export default function Home() {
-  return <div className="h-full w-full p-4 flex">
+  return <div className="h-full w-full p-4 flex gap-x-4">
     <Content>
       <header className="w-full">
         <button className="float-right bg-transparent p-1 text-sm border-solid border border-white rounded-3xl text-white">
@@ -36,5 +37,8 @@ export default function Home() {
         </div>
       </section>
     </Content>
+    <LauncherView>
+
+    </LauncherView>
   </div>
 }
