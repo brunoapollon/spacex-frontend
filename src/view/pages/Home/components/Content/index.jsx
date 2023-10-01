@@ -16,7 +16,7 @@ export default function Content({ onClickLauncher }) {
     loadData
   } = useContentController()
 
-  return <div className="h-full w-1/2 bg-black rounded-2xl p-8 flex flex-col gap-2">
+  return <div className="h-full w-1/2 bg-gray-950 rounded-2xl p-8 flex flex-col gap-2">
     <header className="w-full">
       <button onClick={loadData} className="float-right bg-transparent p-1 text-sm border-solid border border-white rounded-3xl text-white">
         Refresh
