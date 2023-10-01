@@ -12,12 +12,13 @@ export default function Content() {
     nextLauncher,
     loading,
     upcomingLaunches,
-    pastLaunches
+    pastLaunches,
+    loadData
   } = useContentController()
 
   return <div className="h-full w-1/2 bg-black rounded-2xl p-8 flex flex-col gap-2">
     <header className="w-full">
-      <button className="float-right bg-transparent p-1 text-sm border-solid border border-white rounded-3xl text-white">
+      <button onClick={loadData} className="float-right bg-transparent p-1 text-sm border-solid border border-white rounded-3xl text-white">
         Refresh
       </button>
     </header>
