@@ -5,7 +5,7 @@ import moment from 'moment'
 export default function LauncherCard({ data, isLoading, isLaunched }) {
   const { name, links, date_local } = data || {}
   const { patch } = links || {}
-  return <div className="bg-white h-34 w-48 rounded-2xl p-2">
+  return <div className="bg-white h-34 w-48 rounded-2xl p-2 cursor-pointer">
     {isLoading && <div className="w-full h-full flex items-center justify-center flex-col">
       <Spinner />
     </div>}
@@ -15,9 +15,9 @@ export default function LauncherCard({ data, isLoading, isLaunched }) {
         src={patch?.small ? patch.small : 'https://thehill.com/wp-content/uploads/sites/2/2021/05/ca_spacexspherex_020521getty_2.jpg?w=640&h=360&crop=1'}
         alt="laucher"
       />
-      <span className="font-medium">
+      <span className="font-medium text-sm">
         {name}
-        <small className="block text-sm text-gray-400">
+        <small className="block text-gray-400">
           {`launch${isLaunched && 'ed' || ''} at: ` + moment(date_local).format('MM/DD/YYYY HH:mm')}
         </small>
       </span>

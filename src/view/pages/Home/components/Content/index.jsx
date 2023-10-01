@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types'
 import LauncherCard from '../LauncherCard'
 import { useContentController } from './useContentController'
+import { Swiper } from '../Swiper'
+import { SwiperSlide } from 'swiper/react'
+import { LeftAction } from '../Swiper/LeftAction'
+import { RightAction } from '../Swiper/RightAction'
 
 export default function Content() {
   const {
     latestLauccher,
     nextLauncher,
-    loading
+    loading,
+    upcomingLaunches,
+    pastLaunches
   } = useContentController()
 
   return <div className="h-full w-1/2 bg-black rounded-2xl p-8 flex flex-col gap-2">
@@ -26,20 +32,36 @@ export default function Content() {
       </section>
     </section>
     <section>
-      <h3 className="text-white mb-2">Latest Launcher</h3>
-      <div className="flex gap-x-3">
-        <LauncherCard />
-        <LauncherCard />
-        <LauncherCard />
-      </div>
+      <Swiper>
+        <header slot="container-start" className='w-full flex justify-between items-center'>
+          <h3 className="text-white m-0">Upcoming Launches</h3>
+          <div>
+            <LeftAction />
+            <RightAction />
+          </div>
+        </header>
+        {upcomingLaunches.map((launch) => (
+          <SwiperSlide key={launch.id}>
+            <LauncherCard data={launch} isLoading={loading} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
     <section>
-      <h3 className="text-white mb-2">Latest Launcher</h3>
-      <div className="flex gap-x-3">
-        <LauncherCard />
-        <LauncherCard />
-        <LauncherCard />
-      </div>
+      <Swiper>
+        <header slot="container-start" className='w-full flex justify-between items-center'>
+          <h3 className="text-white m-0">Past Launches</h3>
+          <div>
+            <LeftAction />
+            <RightAction />
+          </div>
+        </header>
+        {pastLaunches.map((launch) => (
+          <SwiperSlide key={launch.id}>
+            <LauncherCard data={launch} isLoading={loading} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   </div>
 }
