@@ -6,7 +6,7 @@ import { SwiperSlide } from 'swiper/react'
 import { LeftAction } from '../Swiper/LeftAction'
 import { RightAction } from '../Swiper/RightAction'
 
-export default function Content() {
+export default function Content({ onClickLauncher }) {
   const {
     latestLauccher,
     nextLauncher,
@@ -25,11 +25,11 @@ export default function Content() {
     <section className="flex items-center justify-center gap-8">
       <section>
         <h3 className="text-white mb-2">Latest Launcher</h3>
-        <LauncherCard data={latestLauccher} isLoading={loading} isLaunched />
+        <LauncherCard data={latestLauccher} isLoading={loading} isLaunched onClick={() => onClickLauncher({ ...latestLauccher, isLaunched: true })} />
       </section>
       <section>
         <h3 className="text-white mb-2">Next Launcher</h3>
-        <LauncherCard data={nextLauncher} isLoading={loading} />
+        <LauncherCard data={nextLauncher} isLoading={loading} onClick={() => onClickLauncher(nextLauncher)} />
       </section>
     </section>
     <section>
@@ -43,7 +43,7 @@ export default function Content() {
         </header>
         {upcomingLaunches.map((launch) => (
           <SwiperSlide key={launch.id}>
-            <LauncherCard data={launch} isLoading={loading} />
+            <LauncherCard data={launch} isLoading={loading} onClick={() => onClickLauncher(launch)} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -59,7 +59,7 @@ export default function Content() {
         </header>
         {pastLaunches.map((launch) => (
           <SwiperSlide key={launch.id}>
-            <LauncherCard data={launch} isLoading={loading} />
+            <LauncherCard data={launch} isLoading={loading} isLaunched onClick={() => onClickLauncher({ ...launch, isLaunched: true })} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -68,5 +68,5 @@ export default function Content() {
 }
 
 Content.propTypes = {
-  children: PropTypes.node.isRequired
+  onClickLauncher: PropTypes.func
 }

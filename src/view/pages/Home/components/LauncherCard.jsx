@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import { Spinner } from './Spinner'
 import moment from 'moment'
 
-export default function LauncherCard({ data, isLoading, isLaunched }) {
+export default function LauncherCard({ data, isLoading, isLaunched, onClick }) {
   const { name, links, date_local } = data || {}
   const { patch } = links || {}
-  return <div className="bg-white h-34 w-48 rounded-2xl p-2 cursor-pointer">
+  return <div className="bg-white h-34 w-48 rounded-2xl p-2 cursor-pointer" onClick={onClick}>
     {isLoading && <div className="w-full h-full flex items-center justify-center flex-col">
       <Spinner />
     </div>}
@@ -28,5 +28,6 @@ export default function LauncherCard({ data, isLoading, isLaunched }) {
 LauncherCard.propTypes = {
   data: PropTypes.object,
   isLoading: PropTypes.bool,
-  isLaunched: PropTypes.bool
+  isLaunched: PropTypes.bool,
+  onClick: PropTypes.func
 }
