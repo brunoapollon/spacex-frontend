@@ -1,11 +1,21 @@
 import PropTypes from 'prop-types'
 import { Spinner } from './Spinner'
 import moment from 'moment'
+import { useTheme } from '../../../../app/hooks/useTheme'
+import { cn } from '../../../../app/utils/cn'
 
 export default function LauncherCard({ data, isLoading, isLaunched, onClick }) {
   const { name, links, date_local } = data || {}
   const { patch } = links || {}
-  return <div className="bg-white h-34 w-48 rounded-2xl p-2 cursor-pointer" onClick={onClick}>
+  const { theme } = useTheme()
+
+  return <div
+    className={cn(
+      "bg-white h-34 w-48 rounded-2xl p-2 cursor-pointer",
+      theme === 'light' && 'bg-gray-300'
+    )}
+    onClick={onClick}
+  >
     {isLoading && <div className="w-full h-full flex items-center justify-center flex-col">
       <Spinner />
     </div>}
