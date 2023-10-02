@@ -9,7 +9,7 @@ import { cn } from '../../../../../app/utils/cn'
 import { useTheme } from '../../../../../app/hooks/useTheme'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 
-export default function Content({ onClickLauncher }) {
+export default function Content({ onClickLauncher, className }) {
   const {
     latestLauccher,
     nextLauncher,
@@ -22,8 +22,9 @@ export default function Content({ onClickLauncher }) {
 
   return <div
     className={cn(
-      "h-full w-1/2 bg-gray-950 rounded-2xl p-8 flex flex-col gap-2",
-      theme === 'light' && 'bg-white'
+      "h-full w-1/2 bg-gray-950 rounded-2xl p-8 flex flex-col gap-2 overflow-y-auto",
+      theme === 'light' && 'bg-white',
+      className
     )}
   >
     <header className="w-full flex justify-between items-center">
@@ -46,8 +47,8 @@ export default function Content({ onClickLauncher }) {
         Refresh
       </button>
     </header>
-    <section className="flex items-center justify-center gap-8">
-      <section>
+    <section className="w-full flex items-center justify-center gap-8">
+      <section className='w-1/2'>
         <h3
           className={cn(
             "text-white mb-2",
@@ -56,14 +57,14 @@ export default function Content({ onClickLauncher }) {
           }>Latest Launcher</h3>
         <LauncherCard data={latestLauccher} isLoading={loading} isLaunched onClick={() => onClickLauncher({ ...latestLauccher, isLaunched: true })} />
       </section>
-      <section>
+      <section className='w-1/2'>
         <h3
           className={cn(
             "text-white mb-2",
             theme === 'light' && 'text-gray-500'
           )
           }>Next Launcher</h3>
-        <LauncherCard data={nextLauncher} isLoading={loading} onClick={() => onClickLauncher(nextLauncher)} />
+        <LauncherCard  data={nextLauncher} isLoading={loading} onClick={() => onClickLauncher(nextLauncher)} />
       </section>
     </section>
     <section>
@@ -117,4 +118,5 @@ export default function Content({ onClickLauncher }) {
 
 Content.propTypes = {
   onClickLauncher: PropTypes.func,
+  className: PropTypes.string
 }

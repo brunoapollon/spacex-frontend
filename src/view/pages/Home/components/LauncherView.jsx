@@ -1,20 +1,31 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import { cn } from '../../../../app/utils/cn'
 
-export function LauncherView({ data, onClearSelectedLauncher }) {
+export function LauncherView({ data, onClearSelectedLauncher, className }) {
   const { name, links, id, launchpad, crew, date_local, isLaunched } = data || {}
   const { patch } = links || {}
 
   if (!data) {
-    return <div className="h-full w-1/2 bg-white  rounded-2xl p-8 items-center flex justify-center">
+    return <div
+      className={cn(
+        "h-full w-1/2 bg-white rounded-2xl p-8 items-center flex justify-center",
+        className
+      )}
+    >
       <h1 className='text-large text-gray-700'>
         Please select a launcher to view all details!
       </h1>
     </div>
   }
 
-  return <div className="h-full w-1/2 bg-white  rounded-2xl p-8 overflow-y-auto">
+  return <div
+    className={cn(
+      "h-full w-1/2 bg-white rounded-2xl p-8 overflow-y-auto",
+      className
+    )}
+  >
     <h1 className="text-xl mb-4 flex justify-between items-center">
       <span>
         {name}
@@ -54,5 +65,6 @@ export function LauncherView({ data, onClearSelectedLauncher }) {
 
 LauncherView.propTypes = {
   data: PropTypes.object,
-  onClearSelectedLauncher: PropTypes.func
+  onClearSelectedLauncher: PropTypes.func,
+  className: PropTypes.string
 }
