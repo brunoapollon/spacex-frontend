@@ -3,7 +3,7 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import { cn } from '../../../../app/utils/cn'
 
-export function LauncherView({ data, onClearSelectedLauncher, className }) {
+export default function LauncherView({ data, onClearSelectedLauncher, className }) {
   const { name, links, id, launchpad, crew, date_local, isLaunched } = data || {}
   const { patch } = links || {}
 

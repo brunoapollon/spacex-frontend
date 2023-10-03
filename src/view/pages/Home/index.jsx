@@ -1,7 +1,9 @@
+import { lazy } from 'react';
+
 import { cn } from '../../../app/utils/cn';
 import Content from './components/Content';
-import { LauncherView } from './components/LauncherView';
 import { useHomeController } from './useHomeController';
+const LauncherView = lazy(() => import('./components/LauncherView'));
 
 export default function Home() {
   const {
