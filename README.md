@@ -8,6 +8,9 @@ Nesse projeto optei pela utilização do Tailwind, levei em consideração o tem
 
 Fiz a implementação de contextos simples para o gerenciamento do tema, utilizei hooks do react e criei custom hooks para a aplicação.
 
+## Rodar o projeto
+Para rodar o projeto basta instalar as dependências usando yarn ou npm, criar um arquivo .env e copiar o que está no .env.example e altere a url só se foi aterado a porta do backend. após isso basta rodar o scrip `dev`.
+
 ## Imagens do projeto
 - Light theme
 ![Screenshot from 2023-10-03 20-13-38](https://github.com/brunoapollon/spacex-frontend/assets/68339530/50fc96b6-6ef7-4022-a8ce-01c9030c6859)
