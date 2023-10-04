@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true,
-    port: 3000,
+    port: process.env.VITE_PORT || 3000,
   }
 })
